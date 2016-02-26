@@ -1,0 +1,52 @@
+{% load static wagtailuserbar %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {# Global stylesheets #}
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600|Raleway:400,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}" style="background-image: url('{% block header_image %}{% static "img/home-banner.jpg" %}{% endblock %}')">
+        {% wagtailuserbar %}
+        <header class="layout-header">
+            <h1 class="layout-header__logo logo">
+                Snowdonia Dragons
+                <span class="logo__tagline">North Wales Board Game Community</span>
+            </h1>
+            <nav class="layout-header__nav primary-nav">
+                <ul>
+                    <li><a href="#">Join Us</a></li>
+                    <li><a href="#">Sessions</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Forum</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="layout-body">
+            {% block content %}{% endblock %}
+        </div>
+
+        {# Global javascript #}
+        <script type="text/javascript" src="{% static 'js/snowdoniadragons.js' %}"></script>
+
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>

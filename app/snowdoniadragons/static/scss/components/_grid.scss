@@ -1,0 +1,8 @@
+.grid--half {
+    lost-utility: clearfix;
+    > * {
+        lost-column: 1/3;
+        position: relative;
+        overflow: hidden;
+    }
+}

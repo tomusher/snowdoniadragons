@@ -1,0 +1,20 @@
+.primary-nav ul {
+    > li {
+        display: inline-block;
+        width: 24%;
+    }
+
+    > li a {
+        display: block;
+        text-decoration: none;
+        color: #fff;
+        text-align: center;
+        font-weight: 400;
+        padding: 30px 10px 40px 10px;
+
+        &:hover {
+            background-color: #fff;
+            color: $primary-nav-active-link-color;
+        }
+    }
+}

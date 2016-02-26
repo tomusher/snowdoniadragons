@@ -1,0 +1,28 @@
+$page-width: 980px;
+
+// Colors
+$turquoise: #147B80;
+
+// Color Uses
+$background-color: #EEEEEE;
+$primary-nav-active-link-color: $turquoise;
+$floated-panel-bg-color: #5C2A7F;
+
+@import "reset";
+
+body {
+    background-color: $background-color;
+    background-image: url("/static/img/home-banner.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    // lost-utility: edit;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+@import "shame";
+
+@import "components/layout";
+@import "components/logo";
+@import "components/primary_nav";
+@import "components/heading";
+@import "components/text";
+@import "components/grid";

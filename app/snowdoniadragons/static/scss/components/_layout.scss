@@ -1,0 +1,25 @@
+.layout-header {
+    lost-center: $page-width;
+    width: 100%;
+    padding-bottom: 20%;
+
+    &__logo {
+        lost-column: 4/12;
+        color: #fff;
+        margin-top: 20px;
+    }
+
+    &__nav {
+        lost-column: 8/12;
+    }
+}
+
+.layout-body {
+    lost-center: $page-width;
+    background-color: #fff;
+    padding: 30px;
+}
+
+.layout-body-section {
+    margin-bottom: 40px;
+}

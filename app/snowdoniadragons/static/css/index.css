@@ -1,0 +1,200 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  background-color: #EEEEEE;
+  background-image: url("/static/img/home-banner.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-family: 'Source Sans Pro', sans-serif; }
+
+.floated-panel {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  background-color: #5C2A7F;
+  width: 80%;
+  color: #fff;
+  padding: 10px; }
+
+.floated-panel__title {
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 5px 0;
+  color: #FDB7F9; }
+
+.floated-panel__body {
+  font-size: 1em;
+  line-height: 1.4em;
+  font-weight: 400;
+  color: #FED0FC; }
+
+.layout-header {
+  *zoom: 1;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-bottom: 20%; }
+
+.layout-header:before {
+  content: '';
+  display: table; }
+
+.layout-header:after {
+  content: '';
+  display: table;
+  clear: both; }
+  .layout-header__logo {
+    width: calc(99.99% * 4/12 - (30px - 30px * 4/12));
+    color: #fff;
+    margin-top: 20px; }
+  .layout-header__logo:nth-child(1n) {
+  float: left;
+  margin-right: 30px;
+  clear: none; }
+  .layout-header__logo:last-child {
+  margin-right: 0; }
+  .layout-header__logo:nth-child(12n) {
+  margin-right: 0;
+  float: right; }
+  .layout-header__logo:nth-child(12n + 1) {
+  clear: left; }
+  .layout-header__nav {
+    width: calc(99.99% * 8/12 - (30px - 30px * 8/12)); }
+  .layout-header__nav:nth-child(1n) {
+  float: left;
+  margin-right: 30px;
+  clear: none; }
+  .layout-header__nav:last-child {
+  margin-right: 0; }
+  .layout-header__nav:nth-child(12n) {
+  margin-right: 0;
+  float: right; }
+  .layout-header__nav:nth-child(12n + 1) {
+  clear: left; }
+
+.layout-body {
+  *zoom: 1;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  padding: 30px; }
+
+.layout-body:before {
+  content: '';
+  display: table; }
+
+.layout-body:after {
+  content: '';
+  display: table;
+  clear: both; }
+
+.layout-body-section {
+  margin-bottom: 40px; }
+
+.logo {
+  font-family: "Raleway", Helvetica, Tahoma, sans-serif;
+  font-size: 1.6em;
+  font-weight: 400; }
+  .logo__tagline {
+    font-size: 0.6em;
+    display: block;
+    font-weight: 200; }
+
+.primary-nav ul > li {
+  display: inline-block;
+  width: 24%; }
+
+.primary-nav ul > li a {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  font-weight: 400;
+  padding: 30px 10px 40px 10px; }
+  .primary-nav ul > li a:hover {
+    background-color: #fff;
+    color: #147B80; }
+
+.heading--section {
+  font-size: 1.4em;
+  margin-bottom: 5px; }
+
+.text--subhead-on-dark {
+  font-size: 1em;
+  line-height: 1.4em;
+  font-weight: 400;
+  color: #cccccc; }
+
+.grid--half {
+  *zoom: 1; }
+
+.grid--half:before {
+  content: '';
+  display: table; }
+
+.grid--half:after {
+  content: '';
+  display: table;
+  clear: both; }
+  .grid--half > * {
+    width: calc(99.99% * 1/3 - (30px - 30px * 1/3));
+    position: relative;
+    overflow: hidden; }
+  .grid--half > *:nth-child(1n) {
+  float: left;
+  margin-right: 30px;
+  clear: none; }
+  .grid--half > *:last-child {
+  margin-right: 0; }
+  .grid--half > *:nth-child(3n) {
+  margin-right: 0;
+  float: right; }
+  .grid--half > *:nth-child(3n + 1) {
+  clear: left; }

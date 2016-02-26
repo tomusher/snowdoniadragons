@@ -1,0 +1,23 @@
+.floated-panel {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    background-color: $floated-panel-bg-color;
+    width: 80%;
+    color: #fff;
+    padding: 10px;
+}
+
+.floated-panel__title {
+    font-size: 1.2em;
+    font-weight: normal;
+    margin: 5px 0;
+    color: #FDB7F9;
+}
+
+.floated-panel__body {
+    font-size: 1em;
+    line-height: 1.4em;
+    font-weight: 400;
+    color: #FED0FC;
+}

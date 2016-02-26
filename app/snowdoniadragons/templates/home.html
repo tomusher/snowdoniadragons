@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+{% block content %}
+<div class="layout-body-section">
+    <h2 class="heading--section">
+    Who we are
+</h2>
+    <p>We’re a group of board gamers from North Wales - we arrange various game groups and events which are open for anyone to join.</p>
+</div>
+<div class="layout-body-section">
+    <h2 class="heading--section">
+    Our Groups
+    </h2>
+    <ul class="grid--half">
+    {% for group in groups %}
+        <li>
+            {% image group.main_image fill-310x220 %}
+            <div class="floated-panel">
+                <h3 class="floated-panel__title">{{ group.name }}</h3>
+                <div class="floated-panel__body">
+                    <p class="floated-panel__description">{{ group.summary }}</p>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+<div class="layout-body-section">
+    <h2 class="heading--section">
+    Upcoming
+    </h2>
+    <ul class="grid--full">
+    {% for session in upcoming_sessions %}
+        <li>
+            <h3 class="heading--item">{{ session.game_group.name }}</h3>
+            <p class="text--subhead">{{ session.date }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+<div class="layout-body-section">
+    <h2 class="heading--section">
+    Recent Sessions
+    </h2>
+    <ul class="grid--full">
+    {% for session in recent_sessions %}
+        <li>
+            <h3 class="heading--item">{{ session.game_group.name }}</h3>
+            <p class="text--subhead">{{ session.date }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

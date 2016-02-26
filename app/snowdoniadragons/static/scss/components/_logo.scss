@@ -1,0 +1,11 @@
+.logo {
+    font-family: "Raleway", Helvetica, Tahoma, sans-serif;
+    font-size: 1.6em;
+    font-weight: 400;
+
+    &__tagline {
+        font-size: 0.6em;
+        display: block;
+        font-weight: 200;
+    }
+}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+{% block header_image %}{% image object.main_image fill-1488x600 as header_image %}{{ header_image.url }}{% endblock %}
+{% block content %}
+<div class="layout-body-section">
+    {{ object.name }}
+</div>
+{% endblock %}
