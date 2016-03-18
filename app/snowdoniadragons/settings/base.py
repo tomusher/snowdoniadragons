@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'compressor',
     'taggit',
+    'sorl.thumbnail',
 
     'django.contrib.admin',
     'django.contrib.auth',

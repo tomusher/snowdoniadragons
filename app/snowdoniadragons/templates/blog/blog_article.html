@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+{% block content %}
+<div class="layout-section--short">
+    <h2 class="text--title">{{ page.title }}</h2>
+    <p class="text--intro-small">{{ page.intro }}</p>
+    <p class="text--byline">by {{ page.author }} on {{ page.date }}</p>
+</div>
+<div class="layout-section--bg text--body">
+    <div class="layout-section__image">{% image page.main_image fill-980x300 %}</div>
+    {{ page.body_stream }}
+</div>
+{% endblock %}

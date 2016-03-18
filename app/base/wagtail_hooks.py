@@ -4,6 +4,7 @@ from django.conf import settings
 from wagtail.wagtailcore import hooks
 from wagtailmodeladmin.options import ModelAdmin, wagtailmodeladmin_register
 
+from base.models import Game, Link
 from session.models import Session
 from group.models import Group
 from blog.models import BlogArticle
@@ -20,15 +21,22 @@ class GroupModelAdmin(ModelAdmin):
     list_display = ('name',)
     search_fields = {'name',}
 
-class BlogArticleModelAdmin(ModelAdmin):
-    model = BlogArticle
-    menu_label = 'Blog Post'
-    list_display = ('title',)
-    search_fields = {'title',}
+class GameModelAdmin(ModelAdmin):
+    model = Game
+    menu_label = 'Game'
+    list_display = ('name',)
+    search_fields = {'name',}
+
+class LinkModelAdmin(ModelAdmin):
+    model = Link
+    menu_label = 'Link'
+    list_display = ('name',)
+    search_fields = {'name',}
 
 wagtailmodeladmin_register(SessionModelAdmin)
 wagtailmodeladmin_register(GroupModelAdmin)
-wagtailmodeladmin_register(BlogArticleModelAdmin)
+wagtailmodeladmin_register(GameModelAdmin)
+wagtailmodeladmin_register(LinkModelAdmin)
 
 @hooks.register('insert_editor_js')
 def selectize_js():
@@ -41,11 +49,18 @@ def selectize_js():
         ((settings.STATIC_URL, filename) for filename in js_files)
     )
 
-    return js_includes
+    return js_includes + format_html(
+        """
+        <script>
+           registerHalloPlugin('hallohtml');
+        </script>
+        """
+    )
 
 @hooks.register('insert_editor_css')
 def selectize_css():
     css_files = [
+        'css/admin/admin.css',
         'css/admin/selectize.css',
         'css/admin/selectize.bootstrap3.css'
     ]
@@ -55,7 +70,3 @@ def selectize_css():
     )
 
     return css_includes
-
-@hooks.register('construct_main_menu')
-def construct_main_menu(request, menu_items):
-    menu_items[:] = [item for item in menu_items if item.name not in ('explorer')]

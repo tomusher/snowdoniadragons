@@ -1,8 +1,22 @@
 {% extends "base.html" %}
 {% load wagtailimages_tags %}
-{% block header_image %}{% image object.main_image fill-1488x600 as header_image %}{{ header_image.url }}{% endblock %}
+{% block header %}
+<header class="layout-header" style="border-top-color: #{{ group.colour }}">
+    <h1 class="layout-header__logo logo">
+        {{ group.name }}
+        <span class="logo__tagline">{{ group.summary }}</span>
+    </h1>
+</header>
+{% endblock %}
+
 {% block content %}
-<div class="layout-body-section">
-    {{ object.name }}
+<div class="layout-section--offset">
+    <p>We’re a group of board gamers from North Wales - we arrange various game groups and events which are open for anyone to join.</p>
+</div>
+
+<div class="layout-section">
+    <div class="layout-col-half text--body">
+        {{ group.description|safe }}
+    </div>
 </div>
 {% endblock %}

@@ -1,0 +1,20 @@
+.link-list {
+    padding: 10px 0;
+    clear: both;
+}
+
+.link-list-item {
+    text-decoration: none;
+    padding: 5px 0;
+    color: $text-color;
+    display: block;
+    font-size: $body-font-size;
+}
+
+.link-list-item__icon {
+    fill: $text-color;
+    width: $body-font-size;
+    height: $body-font-size;
+    margin-right: 10px;
+    vertical-align: top;
+}

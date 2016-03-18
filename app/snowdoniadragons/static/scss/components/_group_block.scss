@@ -1,0 +1,42 @@
+.group-block {
+    background-color: #fff;
+    display: flex;
+    position: relative;
+}
+
+.group-block a {
+    width: 100%;
+    text-decoration: none;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.group-block__title {
+    display: block;
+    background-color: $base-color;
+    color: #fff;
+    padding: 20px;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 24px;
+    font-family: "Lato";
+}
+
+.group-block__desc {
+    padding: 10px 20px;
+    font-size: $body-font-size;
+    color: $text-color;
+    font-weight: 300;
+    line-height: 24px;
+    flex: 1;
+}
+
+.group-block__next-sess {
+    font-weight: 300;
+    padding: 20px;
+    font-size: 20px;
+    color: $text-color;
+    line-height: 24px;
+    font-style: italic;
+}

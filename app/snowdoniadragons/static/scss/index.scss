@@ -1,22 +1,40 @@
+@import "reset";
+
 $page-width: 980px;
+
+// Fonts
+$body-font: 'Source Sans Pro', sans-serif;
+$heading-font: 'Lato', sans-serif;
+
+$body-font-size: 20px;
+$heading-font-size: 24px;
 
 // Colors
 $turquoise: #147B80;
+$toxic: #0D4159;
+$line-17: #30BF67;
+
+$monster: #076572;
+$bad-breath: #44C876;
+$scale: #008496;
 
 // Color Uses
-$background-color: #EEEEEE;
+$background-color: #ECF0F1;
+$text-color: #686868;
+$link-color: lighten($text-color, 10%);
+$base-color: #0C8E42;
+$header-color: $scale;
 $primary-nav-active-link-color: $turquoise;
-$floated-panel-bg-color: #5C2A7F;
+$floated-panel-bg-color: $toxic;
 
-@import "reset";
+
 
 body {
     background-color: $background-color;
-    background-image: url("/static/img/home-banner.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
     // lost-utility: edit;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: $body-font;
 }
 @import "shame";
 
@@ -26,3 +44,10 @@ body {
 @import "components/heading";
 @import "components/text";
 @import "components/grid";
+@import "components/session_line";
+@import "components/link_list";
+@import "components/group_block";
+@import "components/blog_post_block";
+@import "components/richtext";
+
+

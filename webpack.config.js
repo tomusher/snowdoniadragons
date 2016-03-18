@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var lost = require('lost');
+var responsiveType = require('postcss-responsive-type');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var LiveReloadPlugin = require('webpack-livereload-plugin');
 
@@ -28,7 +29,7 @@ module.exports = {
     },
     postcss: function() {
         return {
-            defaults: [autoprefixer, lost]
+            defaults: [autoprefixer, lost, responsiveType]
         };
     },
     cssnext: {
