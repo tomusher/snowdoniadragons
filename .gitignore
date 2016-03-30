@@ -2,3 +2,4 @@ node_modules/
 *.pyc
 *.sqlite3
 app/media/
+app/snowdoniadragons/static/css

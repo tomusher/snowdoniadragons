@@ -11,17 +11,6 @@ from group.models import Group
 from session.models import Session
 from blog.models import BlogArticle
 
-class HomeView(TemplateView):
-    template_name = "home.html"
-
-    def get_context_data(*args, **kwargs):
-        return {
-            'groups': Group.objects.all(),
-            'upcoming_sessions': Session.objects.filter(date__gte=datetime.now()),
-            'recent_sessions': Session.objects.filter(date__lt=datetime.now())[:10],
-            'blog_posts': BlogArticle.objects.all()[:10]
-        }
-
 class SearchGamesView(TemplateView):
     def render_to_response(self, context, **response_kwargs):
         result_dict = [{'id': game.bgg_id, 'name': game.name} for game in Game.objects.all()]

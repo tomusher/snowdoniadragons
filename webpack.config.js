@@ -19,12 +19,16 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
         new ExtractTextPlugin("css/index.css"),
-        new LiveReloadPlugin()
+        new LiveReloadPlugin(),
+        new webpack.ProvidePlugin({
+            leaflet: "leaflet"
+        })
     ],
     module: {
         loaders: [
-            { test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", ["css", "postcss", "sass"]) },
+            { test: /\.(scss|css)$/, loader: ExtractTextPlugin.extract("style-loader", ["css", "postcss", "sass"]) },
             { test: /\.js$/, loaders: ['babel'], include: path.join(__dirname, 'src') },
+            { test: /\.png$/, loader: "url-loader" },
         ]
     },
     postcss: function() {
