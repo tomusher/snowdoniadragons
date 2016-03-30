@@ -1,0 +1,32 @@
+{% load wagtailimages_tags thumbnail %}
+{% for session in sessions %}
+<li class="session-line">
+    <div class="session-line__summary">
+        <h3 class="session-line__title">{{ session.get_parent.title }}</h3>
+        <p class="session-line__date">{{ session.date }}</p>
+        <a class="session-line__thread" href="{{ session.forum_thread }}">
+            <svg><use xlink:href="/static/img/icons.svg#icon-speech-bubble"></use></svg>
+            Forum Thread
+        </a>
+    </div>
+    <div class="session-line__details">
+        {% for game in session.games_played.all %} {% thumbnail game.game.image "x100" as im %}
+        <a href="{{ game.game.data.url }}"><img alt="{{ game.game.name }}" title="{{ game.game.name }}" src="{{ im.url }}"></a> {% endthumbnail %} {% endfor %}
+    </div>
+    <div class="session-line__link-list">
+        <ul class="link-list">
+            {% for link in session.related_media.all %}
+            {% if link.link_external %}
+                <a href="{{ link.link }}" class="link-list-item">
+                    <svg class="link-list-item__icon"><use xlink:href="/static/img/icons.svg#icon-link"></use></svg> {{ link.title }}
+                </a>
+            {% else %}
+                <a href="{{ link.link }}" class="link-list-item">
+                    <svg class="link-list-item__icon"><use xlink:href="/static/img/icons.svg#icon-paper"></use></svg> {{ link.link_page.title }}
+                </a>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</li>
+{% endfor %}

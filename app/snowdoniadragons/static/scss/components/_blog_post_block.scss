@@ -1,5 +1,4 @@
 .blog-post-block {
-    border-top: 6px solid $base-color;
     background-color: #fff;
     box-sizing: border-box;
     font-size: $body-font-size;
@@ -26,6 +25,7 @@
     font-size: $heading-font-size;
     font-family: $heading-font;
     font-weight: 300;
+    margin: 0;
 }
 
 .blog-body__author {

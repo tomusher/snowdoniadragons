@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags wagtailroutablepage_tags %}
+{% block header_color %}#{{ page.colour }}{% endblock %}
+{% block header_title %}<a href="{{ page.url }}">{{ page.title }}</a>{% endblock %}
+{% block header_summary %}{{ page.summary }}{% endblock %}
+{% block back_link %}foo{% endblock %}
+
+{% block content %}
+<div class="layout-section--intro">
+    <div class="text--intro-small">
+        {{ page.description|safe }}
+    </div>
+    <div class="text--intro">
+        {% if page.next_session %}
+            Join us at our next session on {{ page.next_session.date|date:"dS F, P" }} or talk to us on our <a href="{{ page.forum_url }}">forums</a>/by <a href="mailto:{{ page.contact_email }}">e-mail</a>.
+        {% else %}
+            There are no {{ page.title }} sessions planned at the moment. Give us a nudge on the <a href="{{ page.forum_url }}">forums</a> or <a href="mailto:{{ page.contact_email }}">e-mail us</a> if you're interested.
+        {% endif %}
+    </div>
+</div>
+    <div class="grid--half">
+        {% if page.next_venue %}
+        <div class="layout-section">
+            <h2 class="layout-section__heading">
+                Venue
+            </h2>
+            {% if page.venue and page.venue != page.next_venue %}
+                <div class="alert-bar">The next {{ page.title }} session is not at the regular venue.</div>
+            {% endif %}
+            <div class="group-map" data-coords="{{ page.next_venue.coords }}"></div>
+            <div class="layout-section__body">
+                <h3 class="text--title">{{ page.next_venue.name }}</h3>
+                <div class="text--body">
+                    {{ page.next_venue.description|richtext }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if page.all_images %}
+        <div class="layout-section">
+            <h2 class="layout-section__heading">
+                Gallery
+            </h2>
+            <ul class="gallery-list">
+            {% for image in page.all_images %}
+                <li>{% image image.image fill-225x225 %}</li>
+            {% endfor %}
+            </ul>
+            <a href="{% routablepageurl page 'gallery' %}">More Images</a>
+        </div>
+        {% endif %}
+    </div>
+{% if page.past_sessions %}
+<div class="layout-section">
+    <h2 class="layout-section__heading">Sessions</h2>
+    <ul class="grid--full">
+        {% include "partials/session_list.html" with sessions=page.past_sessions %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}

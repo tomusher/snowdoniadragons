@@ -2,8 +2,10 @@ from __future__ import unicode_literals
 from datetime import datetime
 
 from django.db import models
+from django.template.response import TemplateResponse
 
 from wagtail.wagtailcore.models import Page
+from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
@@ -12,14 +14,15 @@ from wagtail.wagtailcore.fields import RichTextField
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
+from session.models import SessionImage, Session
+
 class GroupIndex(Page):
     pass
 
-class Group(ClusterableModel):
-    name = models.CharField(max_length=255)
-    summary = models.CharField(max_length=255)
+class Group(RoutablePageMixin, Page, ClusterableModel):
+    summary = models.CharField(max_length=500)
     description = RichTextField()
-    location_coords = models.CharField(max_length=30)
+    venue = models.ForeignKey('base.venue', null=True, blank=True)
     colour = models.CharField(max_length=8)
     main_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -28,24 +31,63 @@ class Group(ClusterableModel):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    forum_url = models.URLField(blank=True)
+    contact_email = models.EmailField(blank=True)
 
-    panels = [
-        MultiFieldPanel([
-            FieldPanel('name', classname="title"),
-            FieldPanel('summary'),
-            FieldPanel('description'),
-            FieldPanel('colour'),
-            FieldPanel('location_coords'),
-            ImageChooserPanel('main_image')
-        ])
+    content_panels = [
+        FieldPanel('title'),
+        FieldPanel('summary'),
+        FieldPanel('venue'),
+        FieldPanel('description'),
+        FieldPanel('colour'),
+        ImageChooserPanel('main_image')
     ]
 
-    parent_page_types = ['GroupIndex']
+    promote_panels = Page.promote_panels + [
+        MultiFieldPanel([
+            FieldPanel('forum_url'),
+            FieldPanel('contact_email')
+        ], heading="Find out More")
+    ]
+
+    subpage_types = ['session.Session',]
 
     def __str__(self):
-        return self.name
+        return self.title
+
+    @property
+    def past_sessions(self):
+        return Session.objects.descendant_of(self).filter(date__lte=datetime.now())
 
     @property
     def next_session(self):
-        session = self.session_set.filter(date__gte=datetime.now()).first()
+        session = Session.objects.descendant_of(self).filter(date__gte=datetime.now()).first()
         return session
+
+    @property
+    def next_venue(self):
+        if self.next_session and self.next_session.venue:
+            return self.next_session.venue
+        else:
+            return self.venue
+
+    @property
+    def all_images(self):
+        sessions = self.past_sessions
+        return SessionImage.objects.filter(page__in=sessions)
+
+    @route(r'^$')
+    def base(self, request):
+        return TemplateResponse(
+            request,
+            self.get_template(request),
+            self.get_context(request)
+        )
+
+    @route(r'^gallery/$')
+    def gallery(self, request):
+        return TemplateResponse(
+            request,
+            'group/gallery.html',
+            self.get_context(request)
+        )

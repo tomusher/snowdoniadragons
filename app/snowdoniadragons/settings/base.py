@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'wagtail.wagtailimages',
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
+    'wagtail.contrib.wagtailroutablepage',
     'wagtail.wagtailcore',
     'wagtailmodeladmin',
 

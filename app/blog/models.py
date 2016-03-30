@@ -12,7 +12,7 @@ from wagtail.wagtailsearch import index
 from modelcluster.models import ClusterableModel
 
 class BlogIndex(Page):
-    pass
+    subpage_types = ['BlogArticle',]
 
 class BlogArticle(Page):
     date = models.DateField("Post date")
@@ -32,13 +32,13 @@ class BlogArticle(Page):
         related_name='+'
     )
 
+    parent_page_types = ['BlogIndex',]
+
     content_panels = [
-        MultiFieldPanel([
-            FieldPanel('title', classname="title"),
-            FieldPanel('date'),
-            FieldPanel('author'),
-            ImageChooserPanel('main_image'),
-            FieldPanel('intro'),
-            StreamFieldPanel('body_stream')
-        ])
+        FieldPanel('title', classname="title"),
+        FieldPanel('date'),
+        FieldPanel('author'),
+        ImageChooserPanel('main_image'),
+        FieldPanel('intro'),
+        StreamFieldPanel('body_stream')
     ]

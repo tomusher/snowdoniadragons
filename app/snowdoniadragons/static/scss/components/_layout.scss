@@ -6,13 +6,35 @@
     border-top: 8px solid $base-color;
     position: relative;
     z-index: 1;
-    padding: 20px 0;
-    margin-bottom: 20px;
+    padding: 20px;
+    margin: 0 0 20px 0;
     box-sizing: border-box;
 
+    @include media(">=desktop") {
+        padding: 20px 0;
+    }
+
+    &__home {
+        display: inline-block;
+        margin-left: -40px;
+
+        > svg {
+            fill: $text-color;
+            width: 30px;
+            height: 30px;
+            vertical-align: bottom;
+            margin-right: 10px;
+        }
+
+        > span {
+            display: none;
+        }
+    }
+
     &__logo {
+        display: inline-block;
         color: $text-color;
-        margin-top: 10px;
+        margin: 10px 0 0 0;
     }
 }
 
@@ -24,41 +46,27 @@
     margin-top: 40px;
 }
 
-.layout-body {
-    background-color: #fff;
-    position: relative;
-    box-sizing: border-box;
-
-    &--home {
-        @extend .layout-body;
-        padding: 10px 50px;
-    }
-}
-
-.layout-body-title {
-    position: absolute;
-    top: -45px;
-    padding-bottom: 10px;
-    color: #fff;
-    font-size: 2.2em;
-    font-weight: 600;
-    text-shadow: 2px 2px #000;
-}
-
 .layout-section {
     margin-top: 30px;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     clear: both;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
 
-    &--intro {
-        margin: 40px 0 80px 0;
+    @include media(">=desktop") {
+        padding: 0;
     }
 
-    &--short {
-        margin: 40px 0 40px 0;
+    &--intro {
+        @extend .layout-section;
+        display: block;
+        margin: 0 0 20px 0;
     }
 
     &--bg {
+        @extend .layout-section;
         background-color: #fff;
         padding: 40px;
 
@@ -68,19 +76,23 @@
         }
     }
 
-
+    &__body {
+        background-color: #fff;
+        padding: 20px;
+        position: relative;
+    }
 }
 
 .layout-section__heading {
-    font-family: "lato";
+    font-family: "Raleway";
     font-size: 100px;
     line-height: 100px;
     font-weight: 300;
     padding: 20px 0;
-    margin-bottom: -40px;
+    margin-bottom: -44px;
     margin-top: -40px;
     margin-left: -30px;
-    color: darken($background-color, 10%);
+    color: darken($background-color, 8%);
     z-index: 0;
     position: relative;
     // font-family: "lato";

@@ -33,15 +33,32 @@
     display: block;
 }
 
-.session-line-title {
+.session-line__title {
     font-size: $heading-font-size;
     font-family: $heading-font;
     font-weight: 300;
+    margin: 0;
 }
 
-.session-line-date {
+.session-line__date {
     font-size: $body-font-size;
     font-weight: 300;
     margin-top: 20px;
     color: lighten($text-color, 20%);
+}
+
+.session-line__thread {
+    font-size: $body-font-size;
+    font-weight: 300;
+    margin-top: 20px;
+    color: $text-color;
+    text-decoration: none;
+
+    > svg {
+        fill: $text-color;
+        width: 20px;
+        height: 20px;
+        vertical-align: bottom;
+        margin-right: 10px;
+    }
 }

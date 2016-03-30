@@ -9,10 +9,11 @@
     color: $text-color;
     display: block;
     font-size: $body-font-size;
+    font-weight: 300;
 }
 
 .link-list-item__icon {
-    fill: $text-color;
+    fill: #ccc;
     width: $body-font-size;
     height: $body-font-size;
     margin-right: 10px;

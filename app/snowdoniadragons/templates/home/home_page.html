@@ -1,9 +1,98 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% load wagtailimages_tags thumbnail %} {% block content %}
 
-{% block content %}
-<div class="layout-body-section">
-<h2 class="heading--section">
-    Who we are
-</h2>
-<p>We’re a group of board gamers from North Wales - we arrange various game groups and events which are open for anyone to join.</p>
+<div class="layout-section--intro">
+    <p class="text--intro">We’re a group of
+        <span>
+            <svg><use xlink:href="/static/img/icons.svg#icon-meeple"></use></svg>
+            board gamers
+        </span> from
+        <span>
+            <svg><use xlink:href="/static/img/icons.svg#icon-welshdragon"></use></svg>
+            North Wales
+        </span> - we arrange various game groups and events which are open for <span>
+
+            <svg><use xlink:href="/static/img/icons.svg#icon-highfive"></use></svg>
+anyone</span> to join.</p>
+    <p class="text--intro-small">You can join us for just one evening, every now and again, or every week. Whether you like eurogames, wargames or card games, there's room for you.</p>
+    <p class="text--intro-small">We'd love to see you at one of <span>our groups</span>.</p>
+    <p class="text--intro-small">We're also on <a href="https://www.facebook.com/snowdoniadragons">Facebook</a>, <a href="https://www.twitter.com/snowdoniadragon">Twitter</a> and <a href="https://boardgamegeek.com/guild/1506">BoardGameGeek</a>.</p>
+</div>
+
+<div class="layout-section">
+    <h2 class="layout-section__heading">
+        Groups
+    </h2>
+    <ul class="grid--thirds">
+        {% for group in groups %}
+        <li class="group-block">
+            <a href="{{ group.url }}">
+                <div class="group-block__header" style="background-color: #{{ group.colour }}">
+                    <h3 class="group-block__title">{{ group.title }}</h3>
+                    {% image group.main_image fill-310x160 %}
+                </div>
+                <div class="group-block__desc">
+                    {{ group.summary }}
+                </div>
+                <div class="group-block__next-sess">
+                    {% if group.next_session %}
+                        Next session: {{ group.next_session.date|date:"dS F, P" }}
+                    {% else %}
+                        No sessions planned
+                    {% endif %}
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% if blog_posts %}
+<div class="layout-section">
+    <h2 class="layout-section__heading">
+        Blog
+    </h2>
+    <ul class="grid--thirds">
+        {% for post in blog_posts %}
+        <li class="blog-post-block">
+            <a href="{{ post.url }}">
+                <div class="blog-post-block__image">{% image post.main_image fill-310x100 %}</div>
+                <div class="blog-body blog-post-block__body">
+                    <h3 class="blog-body__title">{{ post.title }}</h3>
+                    <div class="blog-body__author">{{ post.author }}</div>
+                    <div class="blog-body__date">{{ post.date }}</div>
+                    <div class="blog-body__intro">{{ post.intro }}</div>
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<div class="layout-section">
+    <h2 class="layout-section__heading">
+        Sessions
+    </h2>
+    <ul class="grid--full">
+        {% include "partials/session_list.html" with sessions=recent_sessions %}
+    </ul>
+</div>
+{% for linkset in links %}
+<div class="layout-section">
+    <h2 class="layout-section__heading">
+        {{ linkset.title }}
+    </h2>
+    <ul class="grid--thirds">
+        {% for link in linkset.get_children.live.specific %}
+            <li class="link-block">
+                <a href="{{ link.link_url }}">
+                    {% image link.image fill-310x160 %}
+                    <h3 class="link-block__title">{{ link.title }}</h3>
+                    <div class="link-block__desc">
+                        {{ link.description }}
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}
 {% endblock %}

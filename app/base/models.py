@@ -9,6 +9,8 @@ from django.template.loader import render_to_string
 from jsonfield import JSONField
 from boardgamegeek import BoardGameGeek
 
+from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, PageChooserPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
@@ -17,7 +19,7 @@ class Game(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='games/', null=True, blank=True)
     bgg_id = models.CharField(max_length=50)
-    data = JSONField()
+    data = JSONField(default={})
 
     def save(self, *args, **kwargs):
         bgg = BoardGameGeek()
@@ -26,6 +28,7 @@ class Game(models.Model):
         img_response  = requests.get(game.image)
         filename = game.image.split('/')[-1]
         self.image.save(filename, ContentFile(img_response.content), save=False)
+        self.data['url'] = "https://boardgamegeek.com/boardgame/{0}".format(game.id)
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -33,22 +36,32 @@ class Game(models.Model):
 
     panels = [
         FieldPanel('bgg_id'),
-        FieldPanel('image')
     ]
 
-class Link(models.Model):
+class Venue(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField()
-    image = models.ForeignKey('wagtailimages.Image')
-
-    panels = [
-        FieldPanel('name'),
-        FieldPanel('description'),
-        ImageChooserPanel('image')
-    ]
+    coords = models.CharField(max_length=255)
+    description = RichTextField()
 
     def __str__(self):
         return self.name
+
+class LinkIndex(Page):
+    subpage_types = ['Link',]
+
+class Link(Page):
+    description = models.TextField()
+    image = models.ForeignKey('wagtailimages.Image')
+    link_url = models.URLField()
+
+    content_panels = [
+        FieldPanel('title', classname="title"),
+        FieldPanel('description'),
+        FieldPanel('link_url'),
+        ImageChooserPanel('image')
+    ]
+
+    parent_page_types = ['LinkIndex',]
 
 class LinkFields(models.Model):
     link_external = models.URLField("External link", blank=True)
@@ -73,3 +86,4 @@ class LinkFields(models.Model):
 
     class Meta:
         abstract = True
+

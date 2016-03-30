@@ -4,22 +4,7 @@ from django.conf import settings
 from wagtail.wagtailcore import hooks
 from wagtailmodeladmin.options import ModelAdmin, wagtailmodeladmin_register
 
-from base.models import Game, Link
-from session.models import Session
-from group.models import Group
-from blog.models import BlogArticle
-
-class SessionModelAdmin(ModelAdmin):
-    model = Session
-    menu_label = 'Sessions'
-    list_display = ('game_group', 'date',)
-    search_fields = ('date', 'game_group')
-
-class GroupModelAdmin(ModelAdmin):
-    model = Group
-    menu_label = 'Group'
-    list_display = ('name',)
-    search_fields = {'name',}
+from base.models import Game, Venue
 
 class GameModelAdmin(ModelAdmin):
     model = Game
@@ -27,16 +12,14 @@ class GameModelAdmin(ModelAdmin):
     list_display = ('name',)
     search_fields = {'name',}
 
-class LinkModelAdmin(ModelAdmin):
-    model = Link
-    menu_label = 'Link'
+class VenueModelAdmin(ModelAdmin):
+    model = Venue
+    menu_label = 'Venue'
     list_display = ('name',)
     search_fields = {'name',}
 
-wagtailmodeladmin_register(SessionModelAdmin)
-wagtailmodeladmin_register(GroupModelAdmin)
 wagtailmodeladmin_register(GameModelAdmin)
-wagtailmodeladmin_register(LinkModelAdmin)
+wagtailmodeladmin_register(VenueModelAdmin)
 
 @hooks.register('insert_editor_js')
 def selectize_js():

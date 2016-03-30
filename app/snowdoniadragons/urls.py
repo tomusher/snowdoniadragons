@@ -9,7 +9,7 @@ from wagtail.wagtailcore import urls as wagtail_urls
 from search import views as search_views
 
 from base.views import HomeView, SearchGamesView
-from group.views import GroupDetailView
+from group.views import GroupDetailView, GalleryView
 
 
 urlpatterns = [
@@ -19,11 +19,8 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
-
     url(r'^search-games/$', SearchGamesView.as_view(), name='search_games'),
 
-    url(r'^$', HomeView.as_view(), name='home'),
-    url(r'^group/(?P<pk>[-\w]+)/$', GroupDetailView.as_view(), name='group'),
     url(r'', include(wagtail_urls)),
 ]
 

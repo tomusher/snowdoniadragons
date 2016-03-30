@@ -23,21 +23,25 @@
 
     <body class="layout">
         {% wagtailuserbar %}
-        {% block header %}
-            <header class="layout-header">
-                <h1 class="layout-header__logo logo">
-                    Snowdonia Dragons
-                    <span class="logo__tagline">North Wales Board Game Community</span>
-                </h1>
-            </header>
-        {% endblock %}
+        <header class="layout-header" style="border-top-color: {% block header_color %}{% endblock %}">
+            {% if request.path != "/" %}
+            <a href="/" class="layout-header__home">
+                <svg><use xlink:href="/static/img/icons.svg#icon-home"></use></svg>
+                <span>Home</span>
+            </a>
+            {% endif %}
+            <h1 class="layout-header__logo logo">
+                {% block header_title %}Snowdonia Dragons{% endblock %}
+                <span class="logo__tagline">{% block header_summary %}North Wales Board Game Community{% endblock %}</span>
+            </h1>
+        </header>
         {% block content %}{% endblock %}
         <div class="layout-footer">
             Footer stuff
         </div>
 
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/snowdoniadragons.js' %}"></script>
+        <script type="text/javascript" src="{% static 'app.js' %}"></script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
