@@ -6,6 +6,7 @@
     quotes: "\201C""\201D";
     display: flex;
     flex-direction: column;
+    margin-bottom: 30px;
 
     a {
         text-decoration: none;
@@ -15,6 +16,11 @@
 
 .blog-post-block__image {
     flex: 1;
+
+    > img {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 .blog-post-block__body {
@@ -48,13 +54,4 @@
 .blog-body__intro {
     font-weight: 300;
     margin-top: 20px;
-
-    &:before {
-        content: open-quote;
-        font-size: 80px;
-        color: #ccc;
-        line-height: 0;
-        margin-right: 5px;
-        vertical-align: -40px;
-    }
 }

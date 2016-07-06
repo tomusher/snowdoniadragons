@@ -1,0 +1,23 @@
+.button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: darken(#fff, 40%);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border-bottom: 3px solid darken(#fff, 45%);
+    font-size: 1.1em;
+    vertical-align: 1.1em;
+
+    &:hover {
+        background-color: darken(#fff, 34%);
+        border-bottom: 3px solid darken(#fff, 40%);
+    }
+
+    > svg {
+        fill: currentColor;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+    }
+}

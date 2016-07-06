@@ -16,7 +16,10 @@
 
     &__home {
         display: inline-block;
-        margin-left: -40px;
+
+        @include media(">=desktop") {
+            margin-left: -40px;
+        }
 
         > svg {
             fill: $text-color;

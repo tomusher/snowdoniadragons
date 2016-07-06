@@ -1,0 +1,109 @@
+.layout {
+    lost-center: $page-width;
+}
+
+.layout-header {
+    border-top: 8px solid $base-color;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    margin: 0 0 20px 0;
+    box-sizing: border-box;
+
+    @include media(">=desktop") {
+        padding: 20px 0;
+    }
+
+    &__home {
+        display: inline-block;
+        margin-left: -40px;
+
+        > svg {
+            fill: $text-color;
+            width: 30px;
+            height: 30px;
+            vertical-align: bottom;
+            margin-right: 10px;
+        }
+
+        > span {
+            display: none;
+        }
+    }
+
+    &__logo {
+        display: inline-block;
+        color: $text-color;
+        margin: 10px 0 0 0;
+    }
+}
+
+.layout-footer {
+    background: darken($background-color, 20%);
+    height: 200px;
+    color: #fff;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.layout-section {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    clear: both;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
+
+    @include media(">=desktop") {
+        padding: 0;
+    }
+
+    &--intro {
+        @extend .layout-section;
+        display: block;
+        margin: 0 0 20px 0;
+    }
+
+    &--bg {
+        @extend .layout-section;
+        background-color: #fff;
+        padding: 40px;
+
+        .layout-section__image {
+            margin: -40px -40px 40px -40px;
+
+        }
+    }
+
+    &__body {
+        background-color: #fff;
+        padding: 20px;
+        position: relative;
+    }
+}
+
+.layout-section__heading {
+    font-family: "Raleway";
+    font-size: 100px;
+    line-height: 100px;
+    font-weight: 300;
+    padding: 20px 0;
+    margin-bottom: -44px;
+    margin-top: -40px;
+    margin-left: -30px;
+    color: darken($background-color, 8%);
+    z-index: 0;
+    position: relative;
+    // font-family: "lato";
+    // font-size: 34px;
+    // font-weight: 300;
+    // padding: 20px 0;
+    // color: $text-color;
+    // z-index: 0;
+    // position: relative;
+}
+
+.layout-col-half {
+    lost-column: 1/2;
+}

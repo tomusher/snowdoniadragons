@@ -35,7 +35,7 @@ anyone</span> to join.</p>
                 </div>
                 <div class="group-block__next-sess">
                     {% if group.next_session %}
-                        Next session: {{ group.next_session.date|date:"dS F, P" }}
+                        Next session: {{ group.next_session.date|date:"jS F, P" }}
                     {% else %}
                         No sessions planned
                     {% endif %}
@@ -65,6 +65,9 @@ anyone</span> to join.</p>
         </li>
         {% endfor %}
     </ul>
+    <a class="button"  href="{{ blog_index.url }}">More Blog Posts
+        <svg><use xlink:href="/static/img/icons.svg#icon-arrow-right"></use></svg>
+    </a>
 </div>
 {% endif %}
 <div class="layout-section">

@@ -20,17 +20,24 @@
 }
 
 .session-line__summary {
-    lost-column: 3/12 2;
+    @include media(">=desktop") {
+        lost-column: 3/12 2;
+    }
 }
 
 .session-line__details {
-    lost-column: 9/12 2;
+    @include media(">=desktop") {
+        lost-column: 9/12 2;
+    }
 }
 
 .session-line__link-list {
     clear: both;
-    lost-offset: -3/12;
     display: block;
+
+    @include media(">=desktop") {
+        lost-offset: -3/12;
+    }
 }
 
 .session-line__title {
@@ -58,7 +65,6 @@
         fill: $text-color;
         width: 20px;
         height: 20px;
-        vertical-align: bottom;
         margin-right: 10px;
     }
 }

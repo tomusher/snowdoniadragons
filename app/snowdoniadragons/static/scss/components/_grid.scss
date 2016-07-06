@@ -20,6 +20,10 @@
     @extend .grid;
     lost-utility: clearfix;
 
+    > * {
+        position: relative;
+    }
+
     @include media(">=460px",'<710px') {
         display: flex;
         flex-wrap: wrap;
@@ -33,6 +37,7 @@
 
     @include media(">=710px") {
         display: flex;
+        flex-wrap: wrap;
 
         > * {
             lost-column: 1/3 flex;

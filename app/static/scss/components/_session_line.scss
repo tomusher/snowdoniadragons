@@ -1,0 +1,64 @@
+.session-line {
+    border-top: 6px solid $base-color;
+    background: #fff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    lost-utility: clearfix;
+    z-index: 10;
+    position: relative;
+    padding: 20px;
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: -6px;
+        right: 0;
+        border-top: 6px solid #fff;
+        lost-column: 8/12;
+    }
+}
+
+.session-line__summary {
+    lost-column: 3/12 2;
+}
+
+.session-line__details {
+    lost-column: 9/12 2;
+}
+
+.session-line__link-list {
+    clear: both;
+    lost-offset: -3/12;
+    display: block;
+}
+
+.session-line__title {
+    font-size: $heading-font-size;
+    font-family: $heading-font;
+    font-weight: 300;
+    margin: 0;
+}
+
+.session-line__date {
+    font-size: $body-font-size;
+    font-weight: 300;
+    margin-top: 20px;
+    color: lighten($text-color, 20%);
+}
+
+.session-line__thread {
+    font-size: $body-font-size;
+    font-weight: 300;
+    margin-top: 20px;
+    color: $text-color;
+    text-decoration: none;
+
+    > svg {
+        fill: $text-color;
+        width: 20px;
+        height: 20px;
+        vertical-align: bottom;
+        margin-right: 10px;
+    }
+}

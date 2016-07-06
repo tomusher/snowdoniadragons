@@ -1,0 +1,59 @@
+@import "normalize";
+@import "../../../../node_modules/include-media/dist/include-media";
+
+$page-width: 980px;
+$breakpoints: (phone: 480px, tablet: 768px, desktop: 980px);
+
+// Fonts
+$body-font: 'Source Sans Pro', sans-serif;
+$heading-font: 'Lato', sans-serif;
+
+$body-font-size: 20px;
+$heading-font-size: 24px;
+
+// Colors
+$turquoise: #147B80;
+$toxic: #0D4159;
+$line-17: #30BF67;
+$pop-star: #EA5151;
+$monster: #076572;
+$bad-breath: #44C876;
+$scale: #008496;
+
+// Color Uses
+$background-color: #ECF0F1;
+$text-color: #686868;
+$link-color: lighten($text-color, 10%);
+$base-color: #0C8E42;
+$header-color: $scale;
+$primary-nav-active-link-color: $turquoise;
+$floated-panel-bg-color: $toxic;
+
+$alert-color: $pop-star;
+
+
+
+body {
+    background-color: $background-color;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    // lost-utility: edit;
+    font-family: $body-font;
+}
+@import "shame";
+
+@import "components/layout";
+@import "components/logo";
+@import "components/primary_nav";
+@import "components/heading";
+@import "components/text";
+@import "components/grid";
+@import "components/session_line";
+@import "components/link_list";
+@import "components/richtext";
+
+// Block Types
+@import "components/group_block";
+@import "components/blog_post_block";
+@import "components/link_block";
+

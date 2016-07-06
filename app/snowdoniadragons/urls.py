@@ -8,8 +8,7 @@ from wagtail.wagtailcore import urls as wagtail_urls
 
 from search import views as search_views
 
-from base.views import HomeView, SearchGamesView
-from group.views import GroupDetailView, GalleryView
+from base.views import SearchGamesView
 
 
 urlpatterns = [

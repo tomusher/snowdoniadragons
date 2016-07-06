@@ -1,0 +1,14 @@
+@mixin heading-style($color) {
+    @extend .heading--section;
+    background-color: $color;
+    border-bottom: 4px solid darken($color, 15%);
+}
+
+.heading--section {
+    font-family: $heading-font;
+    font-size: 1.3em;
+    padding: 20px 0;
+    margin-top: 20px;
+    color: #111;
+}
+

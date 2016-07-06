@@ -46,7 +46,9 @@
                 <li>{% image image.image fill-225x225 %}</li>
             {% endfor %}
             </ul>
-            <a href="{% routablepageurl page 'gallery' %}">More Images</a>
+            <a class="button"  href="{% routablepageurl page 'gallery' %}">More Images
+                <svg><use xlink:href="/static/img/icons.svg#icon-arrow-right"></use></svg>
+            </a>
         </div>
         {% endif %}
     </div>
@@ -56,6 +58,9 @@
     <ul class="grid--full">
         {% include "partials/session_list.html" with sessions=page.past_sessions %}
     </ul>
+    <a class="button"  href="{% routablepageurl page 'sessions' %}">All Past Sessions
+        <svg><use xlink:href="/static/img/icons.svg#icon-arrow-right"></use></svg>
+    </a>
 </div>
 {% endif %}
 {% endblock %}

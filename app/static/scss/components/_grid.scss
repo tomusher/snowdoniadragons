@@ -1,0 +1,48 @@
+.grid {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.grid--half {
+    @extend .grid;
+    lost-utility: clearfix;
+
+    @include media(">=desktop") {
+        > * {
+            lost-column: 1/2;
+            position: relative;
+        }
+    }
+}
+
+.grid--thirds {
+    @extend .grid;
+    lost-utility: clearfix;
+
+    @include media(">=460px",'<710px') {
+        display: flex;
+        flex-wrap: wrap;
+
+        > * {
+            lost-column: 1/2 flex;
+            position: relative;
+            overflow: hidden;
+        }
+    }
+
+    @include media(">=710px") {
+        display: flex;
+        ilex-wrap: wrap;
+
+        > * {
+            lost-column: 1/3 flex;
+            position: relative;
+            overflow: hidden;
+        }
+    }
+}
+
+.grid--full {
+    @extend .grid;
+}

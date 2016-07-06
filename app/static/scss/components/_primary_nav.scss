@@ -1,0 +1,21 @@
+.primary-nav ul {
+    > li {
+        display: inline-block;
+        width: 24%;
+    }
+
+    > li a {
+        display: block;
+        text-decoration: none;
+        color: #000;
+        text-transform: lowercase;
+        font-variant: small-caps;
+        text-align: center;
+        padding: 20px 10px 20px 10px;
+
+        &:hover {
+            background-color: #fff;
+            color: $primary-nav-active-link-color;
+        }
+    }
+}

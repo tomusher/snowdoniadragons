@@ -24,10 +24,11 @@ class Game(models.Model):
     def save(self, *args, **kwargs):
         bgg = BoardGameGeek()
         game = bgg.game(game_id=self.bgg_id)
-        self.name = game.name
-        img_response  = requests.get(game.image)
-        filename = game.image.split('/')[-1]
-        self.image.save(filename, ContentFile(img_response.content), save=False)
+        self.name = "{0} ({1})".format(game.name, game.year)
+        if game.image:
+            img_response  = requests.get(game.image)
+            filename = game.image.split('/')[-1]
+            self.image.save(filename, ContentFile(img_response.content), save=False)
         self.data['url'] = "https://boardgamegeek.com/boardgame/{0}".format(game.id)
         super().save(*args, **kwargs)
 

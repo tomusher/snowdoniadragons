@@ -1,0 +1,22 @@
+{% extends "group/group.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+{% block back_link %}{{ page.url }}{% endblock %}
+
+{% block content %}
+<div class="layout-section">
+    <h2 class="layout-section__heading">Sessions</h2>
+    <ul class="grid--full">
+        {% include "partials/session_list.html" with sessions=sessions %}
+    </ul>
+    {% if sessions.has_previous %}
+        <a href="?p={{ sessions.previous_page_number }}" class="button">
+        <svg><use xlink:href="/static/img/icons.svg#icon-chevron-left"></use></svg>
+        Newer</a>
+    {% endif %}
+    {% if sessions.has_next %}
+        <a href="?p={{ sessions.next_page_number }}" class="button">Older
+        <svg><use xlink:href="/static/img/icons.svg#icon-chevron-right"></use></svg>
+        </a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -15,10 +15,13 @@
 
 .group-block__header {
     background-color: $base-color;
+    overflow: hidden;
 
     > img {
         margin: auto;
         vertical-align: bottom;
+        max-width: 100%;
+        height: auto;
     }
 }
 

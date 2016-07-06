@@ -1,0 +1,25 @@
+.group-map {
+    width: 100%;
+    height: 225px;
+}
+
+.alert-bar {
+    background-color: $alert-color;
+    padding: 20px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 300;
+    position: relative;
+}
+
+.gallery-list {
+    position: relative;
+    list-style:none;
+    margin: 0 -20px 0 0;
+    padding: 0;
+
+    > li {
+        display: inline-block;
+        margin: 0 20px 20px 0;
+    }
+}

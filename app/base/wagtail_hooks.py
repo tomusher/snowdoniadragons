@@ -2,9 +2,33 @@ from django.utils.html import format_html, format_html_join
 from django.conf import settings
 
 from wagtail.wagtailcore import hooks
-from wagtailmodeladmin.options import ModelAdmin, wagtailmodeladmin_register
+from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup, modeladmin_register
+from wagtail.contrib.modeladmin.helpers import ButtonHelper
 
 from base.models import Game, Venue
+from group.models import Group, Session
+from blog.models import BlogArticle
+
+class GroupButtonHelper(ButtonHelper):
+    def get_buttons_for_obj(self, obj, *args, **kwargs):
+        btns = super().get_buttons_for_obj(obj, *args, **kwargs)
+        btns.append(
+            {
+                'url': '/admin/pages/add/group/session/{0}/'.format(obj.pk),
+                'label': 'Add Session',
+                'classname': 'button button-small button-secondary',
+                'title': 'Add Session'
+            }
+        )
+        btns.append(
+            {
+                'url': '/admin/pages/{0}/'.format(obj.pk),
+                'label': 'View Sessions',
+                'classname': 'button button-small button-secondary',
+                'title': 'View Sessions'
+            }
+        )
+        return btns
 
 class GameModelAdmin(ModelAdmin):
     model = Game
@@ -18,8 +42,34 @@ class VenueModelAdmin(ModelAdmin):
     list_display = ('name',)
     search_fields = {'name',}
 
-wagtailmodeladmin_register(GameModelAdmin)
-wagtailmodeladmin_register(VenueModelAdmin)
+class GroupModelAdmin(ModelAdmin):
+    model = Group
+    menu_label = 'Group'
+    list_display = ('title',)
+    search_display = ('title',)
+
+    button_helper_class = GroupButtonHelper
+
+class SessionModelAdmin(ModelAdmin):
+    model = Session
+    menu_label = 'Session'
+    list_display = ('title', 'date')
+    search_display = ('title', 'date')
+
+class GameGroupModelAdminGroup(ModelAdminGroup):
+    menu_label = 'Groups'
+    menu_icon = 'folder-open-inverse'
+    items = (GroupModelAdmin, SessionModelAdmin, VenueModelAdmin)
+
+class BlogArticleModelAdmin(ModelAdmin):
+    model = BlogArticle
+    menu_label = 'Blog Post'
+    list_display = ('title', 'date')
+    search_display = ('title', 'date')
+
+modeladmin_register(GameModelAdmin)
+modeladmin_register(GameGroupModelAdminGroup)
+modeladmin_register(BlogArticleModelAdmin)
 
 @hooks.register('insert_editor_js')
 def selectize_js():
