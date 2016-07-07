@@ -3,3 +3,4 @@ node_modules/
 *.sqlite3
 app/media/
 app/snowdoniadragons/static/css
+app/static
