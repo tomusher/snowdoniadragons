@@ -1,6 +1,8 @@
 @import "normalize";
 @import "../../../../node_modules/include-media/dist/include-media";
 
+@lost selector nth-of-type;
+
 $page-width: 980px;
 $breakpoints: (phone: 480px, tablet: 768px, desktop: 980px);
 
@@ -52,6 +54,7 @@ body {
 @import "components/link_list";
 @import "components/richtext";
 @import "components/button";
+@import "components/footer";
 
 // Block Types
 @import "components/group_block";

@@ -33,7 +33,7 @@ module.exports = {
     },
     postcss: function() {
         return {
-            defaults: [autoprefixer, lost, responsiveType]
+            defaults: [lost, autoprefixer, responsiveType]
         };
     },
     cssnext: {

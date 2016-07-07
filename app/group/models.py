@@ -27,7 +27,7 @@ class SessionManager(PageManager):
     def past(self):
         return self.get_queryset().filter(date__lt=datetime.now())
 
-class Session(Page, RoutablePageMixin, ClusterableModel):
+class Session(RoutablePageMixin, Page):
     name = models.CharField(max_length=255, blank=True, help_text="Leave blank if this is just a regular session")
     date = models.DateTimeField("Session date")
     summary = models.CharField(max_length=500, blank=True)

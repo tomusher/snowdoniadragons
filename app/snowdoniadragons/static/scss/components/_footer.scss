@@ -1,0 +1,15 @@
+.footer-links__header {
+    
+}
+
+.footer-links__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li a {
+        display: block;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+}

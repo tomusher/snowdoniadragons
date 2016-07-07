@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 from boardgamegeek import BoardGameGeek
 
 from base.models import Game
-from group.models import Group, Session
+from group.models import Group
 from blog.models import BlogArticle
 
 class SearchGamesView(TemplateView):

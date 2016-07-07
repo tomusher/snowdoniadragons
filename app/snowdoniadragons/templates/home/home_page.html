@@ -87,7 +87,7 @@ anyone</span> to join.</p>
         {% for link in linkset.get_children.live.specific %}
             <li class="link-block">
                 <a href="{{ link.link_url }}">
-                    {% image link.image fill-310x160 %}
+                    {% image link.image width-266 height-160 pad-266x160 %}
                     <h3 class="link-block__title">{{ link.title }}</h3>
                     <div class="link-block__desc">
                         {{ link.description }}

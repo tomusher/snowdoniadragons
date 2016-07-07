@@ -9,6 +9,8 @@ from base.models import Game, Venue
 from group.models import Group, Session
 from blog.models import BlogArticle
 
+from .image_operations import PadOperation
+
 class GroupButtonHelper(ButtonHelper):
     def get_buttons_for_obj(self, obj, *args, **kwargs):
         btns = super().get_buttons_for_obj(obj, *args, **kwargs)
@@ -103,3 +105,10 @@ def selectize_css():
     )
 
     return css_includes
+
+
+@hooks.register('register_image_operations')
+def register_image_operations():
+    return [
+        ('pad', PadOperation),
+    ]

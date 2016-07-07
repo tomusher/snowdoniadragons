@@ -1,4 +1,4 @@
-{% load static wagtailuserbar %}
+{% load static wagtailuserbar sd_tags %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -37,7 +37,22 @@
         </header>
         {% block content %}{% endblock %}
         <div class="layout-footer">
-            Footer stuff
+            <div class="grid--thirds">
+                <div class="footer-links">
+                    <h3 class="footer-links__header">Groups</h3>
+                    <ul class="footer-links__list">
+                        {% group_list %}
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-links__header">Social</h3>
+                    <ul class="footer-links__list">
+                        <li><a href="https://boardgamegeek.com/guild/1506">BoardGameGeek</a></li>
+                        <li><a href="https://www.facebook.com/snowdoniadragons">Facebook</a></li>
+                        <li><a href="https://www.twitter.com/snowdoniadragon">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         {# Global javascript #}

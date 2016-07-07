@@ -12,7 +12,7 @@
     </div>
     <div class="text--intro">
         {% if page.next_session %}
-            Join us at our next session on {{ page.next_session.date|date:"dS F, P" }} or talk to us on our <a href="{{ page.forum_url }}">forums</a>/by <a href="mailto:{{ page.contact_email }}">e-mail</a>.
+            Join our next session on {{ page.next_session.date|date:"jS F, P" }} or find us on our <a href="{{ page.forum_url }}">forums</a>/by <a href="mailto:{{ page.contact_email }}">e-mail</a>.
         {% else %}
             There are no {{ page.title }} sessions planned at the moment. Give us a nudge on the <a href="{{ page.forum_url }}">forums</a> or <a href="mailto:{{ page.contact_email }}">e-mail us</a> if you're interested.
         {% endif %}
